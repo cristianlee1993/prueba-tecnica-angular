@@ -26,7 +26,7 @@ export class TaskService {
       title,
       completed: false
     };
-    this.tasks.push(newTask);
+    this.tasks.unshift(newTask);
     this.tasks$.next(this.tasks);
   }
 

@@ -1,22 +1,41 @@
 .task-form-card {
-  background-color: #e3e9fd; /* Azul claro profesional */
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  background-color: #f0f4f8;
+  padding: 1.5rem;
   border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
 }
 
-.form-content {
+mat-card-header {
   display: flex;
-  gap: 1rem;
+  justify-content: center;
   align-items: center;
 }
+
+mat-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1976d2;
+}
+
 .form-row {
-  display: flex;        /* Pone input y botón en la misma fila */
-  align-items: center;  /* Alinea verticalmente */
-  gap: 25px;            /* Espacio entre input y botón */
+  display: flex;
+  align-items: center;
+  gap: 16px; /* separa input y botón */
+  margin-top: 1rem;
 }
 
 .task-input {
-  flex: 1; /* El input ocupa todo el espacio disponible */
+  flex: 1; /* hace que ocupe todo el ancho disponible */
 }
 
+.task-input input {
+  font-size: 1.2rem; /* hace el texto más grande */
+  padding: 12px; /* agrega espacio interno */
+}
+
+.task-button {
+  height: 50px; /* hace el botón más grande */
+  font-size: 1rem;
+}

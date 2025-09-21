@@ -1,4 +1,8 @@
-import { ApplicationConfig,importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -17,7 +21,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,16 +30,16 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
 
-     importProvidersFrom(
+    importProvidersFrom(
       FormsModule,
       MatInputModule,
       MatButtonModule,
       MatListModule,
       MatCheckboxModule,
       MatIconModule,
-      MatCardModule
-    )
+      MatCardModule,
+      MatTableModule,
+      MatDividerModule
+    ),
   ],
-
-
 };

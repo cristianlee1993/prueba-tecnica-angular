@@ -2,25 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task, TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
-import { TaskFormComponent } from '../task-form/task-form.component';
-import { TaskItemComponent } from '../task-item/task-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, TaskFormComponent, TaskItemComponent, MatListModule, MatCardModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
+  displayedColumns: string[] = ['title', 'completed', 'actions'];
   tasks$!: Observable<Task[]>;
 
   constructor(private taskService: TaskService) {}
+  dataSource = new MatTableDataSource<Task>();
 
   ngOnInit() {
     this.tasks$ = this.taskService.getTasks();
+    this.tasks$.subscribe((tasks) => {
+      this.dataSource.data = tasks;
+    });
   }
 
   onToggleComplete(id: number) {
@@ -28,6 +41,11 @@ export class TaskListComponent implements OnInit {
   }
 
   onDeleteTask(id: number) {
-    this.taskService.deleteTask(id);
+    const task = this.dataSource.data.find((t) => t.id === id);
+    if (task && task.completed) {
+      this.taskService.deleteTask(id);
+    } else {
+      console.warn('No se puede eliminar una tarea no completada');
+    }
   }
 }

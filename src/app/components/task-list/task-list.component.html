@@ -4,13 +4,38 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-list>
-      <app-task-item 
-        *ngFor="let task of tasks$ | async" 
-        [task]="task"
-        (toggleComplete)="onToggleComplete($event)"
-        (deleteTask)="onDeleteTask($event)">
-      </app-task-item>
-    </mat-list>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 full-width-table">
+
+
+      <!-- Columna: Título -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Tarea </th>
+        <td mat-cell *matCellDef="let task"> {{ task.title }} </td>
+      </ng-container>
+
+      <!-- Columna: Completada -->
+      <ng-container matColumnDef="completed">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let task">
+          <mat-checkbox [checked]="task.completed" (change)="onToggleComplete(task.id)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- Columna: Acciones -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let task">
+          <button mat-icon-button color="warn" (click)="onDeleteTask(task.id)" [disabled]="!task.completed"
+            matTooltip="Solo se pueden eliminar tareas completadas">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Header y filas -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </mat-card-content>
 </mat-card>
