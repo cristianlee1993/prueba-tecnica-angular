@@ -1,0 +1,20 @@
+.task-list-card {
+  background-color: #f0f4f8; /* Gris suave profesional */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+mat-card-header {
+  border-bottom: 1px solid #d1d9e6;
+  margin-bottom: 0.5rem;
+}
+
+mat-card-title {
+  font-weight: 600;
+  color: #1976d2; /* Azul elegante */
+}
+
+mat-list {
+  margin-top: 0.5rem;
+}

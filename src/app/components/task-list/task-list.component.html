@@ -1,0 +1,16 @@
+<mat-card class="task-list-card">
+  <mat-card-header>
+    <mat-card-title>Mis Tareas</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list>
+      <app-task-item 
+        *ngFor="let task of tasks$ | async" 
+        [task]="task"
+        (toggleComplete)="onToggleComplete($event)"
+        (deleteTask)="onDeleteTask($event)">
+      </app-task-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

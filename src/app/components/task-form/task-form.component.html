@@ -1,0 +1,18 @@
+<mat-card class="task-form-card">
+  <mat-card-header>
+    <mat-card-title>Nueva Tarea</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="form-content">
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="task-input">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="taskTitle" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="task-button" (click)="addTask()">
+        Agregar
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

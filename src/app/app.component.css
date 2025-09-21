@@ -1,0 +1,22 @@
+.app-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #edeaea;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.task-form-section {
+  margin-bottom: 2rem;
+}
+
+.task-list-section {
+  margin-top: 2rem;
+}

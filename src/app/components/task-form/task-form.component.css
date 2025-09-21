@@ -1,0 +1,22 @@
+.task-form-card {
+  background-color: #e3e9fd; /* Azul claro profesional */
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+.form-content {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.form-row {
+  display: flex;        /* Pone input y botón en la misma fila */
+  align-items: center;  /* Alinea verticalmente */
+  gap: 25px;            /* Espacio entre input y botón */
+}
+
+.task-input {
+  flex: 1; /* El input ocupa todo el espacio disponible */
+}
+
